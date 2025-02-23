@@ -1,0 +1,13 @@
+I added the excel file using VsCode, well it gave it multiple errors
+I passed a litle time readin the log, then I tried to open the file using Microsoft Excel, didn't worked 
+It's need to create the xlsx file like with explorer and not VsCode
+
+{ from openpyxl import Workbook
+
+workbook = Workbook()
+
+workbook.save(filename="sample.xlsx") }  CREATE A NEW SPREADSHEET
+
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\veraf\\Desktop\\Python\\financesPy.xlsx'
+
+THIS ERROR MEANS THAT THE FILE IS ACTIVE
