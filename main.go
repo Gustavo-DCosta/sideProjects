@@ -1,47 +1,53 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
+
+func Msl() {
+	var a = map[string]int{"": 1}
+	fmt.Printf("a\t%v\n", a)
+}
+
+func StrRunes() {
+
+	fmt.Println("")
+	str := "Gustavo"
+	runes := []rune(str)
+	fmt.Println(runes[5])        // output: 71
+	fmt.Printf("%c\n", runes[5]) // output: G
+
+	str1 := "🐶"
+	fmt.Println(len(str1))              // output: 4 ← because 🐶 is 4 bytes!
+	fmt.Println([]rune(str1))           // output: [128054]
+	fmt.Printf("%c\n", []rune(str1)[0]) // output: 🐶
+
+}
 
 func main() {
-	var choice int8
-	to_doList := []string{}
-	for {
-		// Show menu again after each action
-		fmt.Println(`Welcome to our APP, what would you like to do?
-1. See your to-do list	
-2. Add a to-do
-3. Exit`)
+	Msl()
+	StrRunes()
+	var i int8
 
-		// Get the user's choice
-		fmt.Scanln(&choice)
+	// Array (fixed size)
+	var nums [7]int = [7]int{1, 2, 3, 4, 5, 7, 8}
+	nums[2] = 4
+	//nums[4] = 5
+	fmt.Println("Array:", nums)
+	fmt.Println("Lenght: ", len(nums))
 
-		// Switch based on choice
-		switch choice {
-		case 1:
-			// Print the to-do list
-			fmt.Println("Here are your to-do list items:")
-			if len(to_doList) == 0 {
-				fmt.Println("Your to-do list is empty!")
-			} else {
-				for i, task := range to_doList {
-					fmt.Printf("%d. %s\n", i+1, task)
-				}
-			}
-		case 2:
-			// Add a new to-do
-			var to_do string
-			fmt.Println("Please add a to-do:")
-			fmt.Scanln(&to_do)
-			to_doList = append(to_doList, to_do)
-			fmt.Println("To-do added!")
-		case 3:
-			// Exit the program
-			fmt.Println("Goodbye!")
-			return
-		default:
-			fmt.Println("Invalid choice, please try again.")
-		}
+	for i = 0; i < 7; i++ {
+		fmt.Println(nums)
 	}
+
+	// Slice (dynamic)
+	var mySlice = []int{}
+	fmt.Println("This is a slice: ", mySlice)
+	fmt.Println("The is their capacity: ", cap(mySlice))
+
+	letters := []string{"a", "b", "c"}
+	letters = append(letters, "d")
+	fmt.Println("Slice:", letters)
+
+	// Modify a slice
+	letters[1] = "z"
+	fmt.Println("Modified slice:", letters)
 }
