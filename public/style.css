@@ -4,7 +4,7 @@ body {
     margin: 0;
 }
 
-.header_container {
+    .header_container {
     display: flex;
     align-items: center;
     background-color: #7b5d3d;
