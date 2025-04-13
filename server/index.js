@@ -6,24 +6,25 @@ const PORT = 3000;
 
 // Serve everything from public/
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use('/photos', express.static(path.join(__dirname, '..', 'photos')));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/home.html"))
-  res.send("Entered in home app")
+  res.sendFile(path.join(__dirname, "..", "public", "home.html"));
+  // Remove the res.send() - you can only send one response
 })
 
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/about.html"))
-  res.send("entered about")
+  res.sendFile(path.join(__dirname, "..", "public", "about.html"));
+  // Remove the res.send()
 })
 
 app.get("/timzeones", (req, res) => {
-  res.sendFile(path.join(__dirname, "timezones.html"))
-  res.send("entered timezones")
+  res.sendFile(path.join(__dirname, "..", "public", "timezones.html"));
+  // Remove the res.send()
 })
 
 app.get("/api/timezones", (req, res) => {
-
+  // API
 })
 
 app.listen(PORT, () => {
