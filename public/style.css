@@ -30,3 +30,9 @@ body {
     margin-left: auto; /* Pushes the .painel to the right */
     margin-right: 20px; /* Adds space between .painel and the edge of the screen */
 }
+
+.painel a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}

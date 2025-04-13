@@ -9,17 +9,21 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/home.html"))
-  console.log("Entered in home app")
+  res.send("Entered in home app")
 })
 
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "public/about.html"))
-  console.log("entered about")
+  res.send("entered about")
 })
 
 app.get("/timzeones", (req, res) => {
   res.sendFile(path.join(__dirname, "timezones.html"))
-  console.log("entered timezones")
+  res.send("entered timezones")
+})
+
+app.get("/api/timezones", (req, res) => {
+
 })
 
 app.listen(PORT, () => {
