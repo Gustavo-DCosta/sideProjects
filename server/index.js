@@ -22,19 +22,26 @@ app.get("/about", (req, res) => {
 
 //redirects timezoness to it's html file supposedely
 app.get("/timezones", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "timezone.html"));
+  res.sendFile(path.join(__dirname, "..", "public", "timezones.html"));
 });
 
+
 app.post("/api/timezones", (req, res) => {
-  const from = req.body.from;
-  const to = req.body.to;
+  const { from, to, timezone } = req.body;
 
   console.log("From:", from);
   console.log("To:", to);
+  console.log(" ");
+  console.log("Received timezone from client:", timezone);
 
-  console.log(" ")
+  res.json({
+    message: "Received!",
+    from,
+    to,
+    timezone
+  });
 
-  res.json({ from, to });
+  console.log(`[${new Date().toISOString()}] Timezone received: ${timezone}`);
 });
 
 app.listen(PORT, () => {

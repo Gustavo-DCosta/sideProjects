@@ -1,5 +1,11 @@
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 let userZone = timezone;
+fetch("/api/timezones", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ timezone })
+});
+console.log("server should receive this...")
 console.log("The timezone is: ", userZone);
 
 // This also works
