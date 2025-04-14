@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fetch = require('node-fetch'); // Import node-fetch for server-side fetch
 
 const app = express();
 const PORT = 3000;
@@ -19,10 +20,9 @@ app.get("/about", (req, res) => {
   // Remove the res.send()
 })
 
-app.get("/timzeones", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "timezones.html"));
-  // Remove the res.send()
-})
+app.get("/timezone", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "timezone.html"));
+});
 
 app.post("/api/timezones", (req, res) => {
   const from = req.body.from;

@@ -22,5 +22,14 @@
   <button id="searchBtn">Search</button>
   <div id="result"></div>
   <script src="timezones.js"></script>
+  <script>
+    fetch("/timezones") 
+      .then(res => res.json())
+      .then(data => {
+        console.log("Time zone information: ", data);
+
+    document.getElementById("timezoneInput").value = data.timezone;
+    });
+  </script>
 </body>
 </html>
