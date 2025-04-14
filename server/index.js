@@ -12,15 +12,16 @@ app.use('/photos', express.static(path.join(__dirname, '..', 'photos')));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "home.html"));
-  // Remove the res.send() - 
+  console.log("Entered the website")
 })
 
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "about.html"));
-  // Remove the res.send()
+  console.log("Entered about.html")
 })
 
-app.get("/timezone", (req, res) => {
+//redirects timezoness to it's html file supposedely
+app.get("/timezones", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "timezone.html"));
 });
 
@@ -31,6 +32,7 @@ app.post("/api/timezones", (req, res) => {
   console.log("From:", from);
   console.log("To:", to);
 
+  console.log(" ")
 
   res.json({ from, to });
 });

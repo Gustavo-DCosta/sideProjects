@@ -1,3 +1,23 @@
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+let userZone = timezone;
+console.log("The timezone is: ", userZone);
+
+// This also works
+
+//This works fine too
+const wantsToChange = window.confirm(`We detected that you are in ${timezone}. want to change it?`);
+
+if (wantsToChange) {
+  const newZone = window.prompt("Enter you're city/timezone like:(Europe/Paris):  ", timezone);
+  if (newZone) {
+    userZone = newZone;
+    // Save Zone with cookies
+    document.cookie = `timezone=${encodeURIComponent(userZone)}; path=/; max-age=30;` //30 days
+  }
+}
+  
+
+// ---------------------- This works perfectly ----------------------------------
 document.getElementById("searchBtn").addEventListener("click", function () {
     const fromCity = document.getElementById("fromCity").value.trim();
     const toCity = document.getElementById("toCity").value.trim();
@@ -7,7 +27,7 @@ document.getElementById("searchBtn").addEventListener("click", function () {
       return;
     }
   
-    fetch("/api/timezones", {
+    fetch("api/timezones", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -24,4 +44,16 @@ document.getElementById("searchBtn").addEventListener("click", function () {
     })
     .catch(err => console.error("Error:", err));
 });
+
+// The cookies are also saved
+function getCookie(name) {
+  const cookie = document.cookie.split("; ");
+  for (let c of cookie) {
+    const [key, val] = c.split("=");
+    if (key === name) return decodeURIComponent(val)
+  }
+  return null
+}
+
+const savedZone = getCookie("Timezone") || "UTC"
   

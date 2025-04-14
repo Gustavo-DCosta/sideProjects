@@ -11,7 +11,7 @@ body {
 .header_container {
     display: flex;
     align-items: center;
-    background-color: #7b5d3d;
+    background-color: #64615e55;
     width: 100%;    
     height: 75px;
     opacity: 0.7;
