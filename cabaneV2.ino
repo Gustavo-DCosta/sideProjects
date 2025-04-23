@@ -70,12 +70,9 @@ void loop() {
 
   Serial.println("  "); //ligne blanche
 
-  // Attempt to read the temperature and humidity values from the DHT11 sensor.
+ 
   int result = dht11.readTemperatureHumidity(temperature, humidity);
 
-  // Check the results of the readings.
-  // If the reading is successful, print the temperature and humidity values.
-  // If there are errors, print the appropriate error messages.
   if (result == 0) {
     Serial.print("Temperature: ");
     Serial.print(temperature);
@@ -86,9 +83,9 @@ void loop() {
     // Activer le buzzer si la température dépasse 25°C ou si le niveau de gaz est supérieur à 600
     if (temperature > 25 || niv_gas > 600) {
       digitalWrite(buzzer, HIGH);
-      delay(500); // Faire sonner le buzzer pendant 500ms
+      delay(500);
       digitalWrite(buzzer, LOW);
-      delay(500); // Pause de 500ms
+      delay(500); 
     }
   } else {
     // Print error message based on the error code.
